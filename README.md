@@ -10,6 +10,7 @@
 
 <p align="center">
   <a href="https://github.com/devenes/todo-ecr-ecs-cluster/actions/workflows/node.js.yml"> <img src="https://github.com/devenes/todo-ecr-ecs-cluster/actions/workflows/node.js.yml/badge.svg" alt="Test"/></a>
+  <img alt="Tool" src="https://shields.io/badge/-Terraform-%235835CC?logo=terraform&style=Flat">
   <img alt="Tool" src="https://badges.aleen42.com/src/docker.svg">
   <img alt="Tool" src="https://badges.aleen42.com/src/node.svg">
   <img alt="Tool" src="https://badges.aleen42.com/src/javascript.svg">
@@ -61,6 +62,8 @@ The following tools were used in this project:
 - [React](https://reactjs.org/)
 - [Express](https://expressjs.com/)
 - [SQLite](https://www.sqlite.org/)
+- [Terraform](https://www.terraform.io/)
+- [Jenkins](https://jenkins.io/)
 
 ## :white_check_mark: Requirements ##
 
@@ -89,6 +92,21 @@ yarn install --production
 # Run the project
 # The server will initialize in the <http://localhost:3000>
 npm run start
+```
+
+### You can run Terraform commands in the project folder:
+
+```bash
+# Run the Terraform init command
+terraform init
+```
+
+```bash
+# Run the Terraform plan command
+terraform plan
+# After this command, you will see the changes that will be applied to the infrastructure
+# You can run the apply command to apply the changes
+terraform apply --auto-approve
 ```
 
 ### If you want to run the project in a Docker container, you can use the following command:
