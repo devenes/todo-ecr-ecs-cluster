@@ -109,6 +109,49 @@ terraform plan
 terraform apply --auto-approve
 ```
 
+- if you want to manually run 
+
+```bash
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin <aws_account_id>.dkr.ecr.us-east-1.amazonaws.com
+```
+
+- Then run the image
+
+```bash
+docker run --name todo -dp 80:3000 <aws_account_id>.dkr.ecr.us-east-1.amazonaws.com/devenes/to-do-app:latest
+```
+- Delete the container 
+
+```bash
+docker container stop todo
+docker container rm todo
+```
+
+- Createa ECS cluster with a unique name with the following command.
+
+```bash
+aws ecs create-cluster --cluster-name to-do-app
+```
+
+- Register the task definition with the following command.
+
+```bash
+aws ecs register-task-definition --cli-input-json file://to-do-app.json
+```
+
+- List the task definitions.
+
+```bash
+aws ecs list-task-definitions
+```
+
+- Create a service with following command.
+> Note: securityGroups=[sg-e29b36ce] is default security group. If we don't specify any security group, aws assign default security group to the cluster.
+```bash
+# change the subnets and security group and make sure that the 3000 port is open
+aws ecs create-service --cluster to-do-app --service-name to-do-app-service --task-definition to-do-app --desired-count 1 --launch-type "FARGATE" --network-configuration "awsvpcConfiguration={subnets=[subnet-077c9758],securityGroups=[sg-e29b36ce],assignPublicIp=ENABLED}" 
+```
+
 ### If you want to run the project in a Docker container, you can use the following command:
 
 - Build the Docker container image using the `docker build` command.
@@ -136,6 +179,27 @@ docker run --name todo -d -p 80:3000 todo-app:v1.0
 docker ps
 # or
 docker container ls
+```
+- If necessary, authenticate the Docker CLI to your default `ECR registry`.
+
+```bash
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin <aws_account_id>.dkr.ecr.us-east-1.amazonaws.com
+```
+
+- Delete the ECR repository `devenes-repo/todo-app` from AWS CLI.
+
+```bash
+aws ecr delete-repository \
+      --repository-name devenes/to-do-app \
+      --force \
+      --region us-east-1
+```
+
+- Delete the service and ecs cluster.
+
+```bash
+aws ecs delete-service --cluster to-do-app --service to-do-app-service --force
+aws ecs delete-cluster --cluster to-do-app
 ```
 
 ## 📷 Expected Output ##
