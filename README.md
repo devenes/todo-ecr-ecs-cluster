@@ -6,7 +6,7 @@
   <!-- <a href="https://todowebapp.netlify.app">Demo</a> -->
 </div>
 
-<h1 align="center">Todo Web Application</h1>
+<h1 align="center">Todo Web Application Deployed on ECR to ECS Cluster with Jenkins Pipeline</h1>
 
 <p align="center">
   <a href="https://github.com/devenes/todo-ecr-ecs-cluster/actions/workflows/node.js.yml"> <img src="https://github.com/devenes/todo-ecr-ecs-cluster/actions/workflows/node.js.yml/badge.svg" alt="Test"/></a>
@@ -45,7 +45,7 @@
 
 ## :dart: About ##
 
-Javascript web application to manage your todo list in a simple and easy way 🚀 
+Javascript web application 🚀 automated with Jenkins pipeline to create Docker image and push the image to AWS Elastic Container Registry (ECR) and deploy them on Elastic Container Service (ECS) Cluster.
 
 ## :rocket: Technologies ##
 
