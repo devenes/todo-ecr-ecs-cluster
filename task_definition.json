@@ -1,0 +1,21 @@
+{
+  "family": "to-do-app",
+  "networkMode": "awsvpc",
+  "containerDefinitions": [
+    {
+      "name": "to-do-app",
+      "image": "123456789123.dkr.ecr.us-east-1.amazonaws.com/devenes/to-do-app:latest",
+      "portMappings": [
+        {
+          "containerPort": 3000,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true
+    }
+  ],
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "256",
+  "memory": "512",
+  "executionRoleArn": "arn:aws:iam::123456789123:role/ecsTaskExecutionRole"
+}
