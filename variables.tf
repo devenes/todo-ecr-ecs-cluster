@@ -1,0 +1,21 @@
+data "aws_caller_identity" "current" {}
+variable "github-email" {}
+variable "github-username" {}
+variable "github-token" {}
+variable "key_pair" {}
+variable "pem_key_address" {}
+variable "sg-ports" {}
+variable "security_group" {}
+variable "ami" {}
+variable "instance_type" {}
+variable "server_name" {}
+variable "github_repository_name" {}
+variable "github_repository_visibility" {}
+variable "region" {}
+variable "profile" {}
+variable "aws_access_key" {}
+variable "aws_secret_key" {}
+variable "jenkins_iam_role_name" {}
+variable "ec2_profile_name" {}
+variable "ec2_volume_size" {}
+variable "ssh_user" {}
